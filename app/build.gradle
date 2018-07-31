@@ -20,19 +20,19 @@ android {
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     ndk {
-      abiFilters 'x86', 'x86_64', 'armeabi-v7a', 'arm64-v8a'
+      abiFilters 'x86', 'x86_64', 'armeabi-v7a', 'arm64-v8a', 'mips'
     }
   }
 
   signingConfigs {
     release {
       def props = new Properties()
-      def propsFile = rootProject.file('signing.properties')
-      props.load(new FileInputStream((propsFile)))
-      storeFile = rootProject.file(props['STORE_FILE'])
-      storePassword = props['STORE_PASSWORD']
-      keyAlias = props['KEY_ALIAS']
-      keyPassword = props['KEY_PASSWORD']
+//      def propsFile = rootProject.file('signing.properties')
+//      props.load(new FileInputStream((propsFile)))
+//      storeFile = rootProject.file(props['STORE_FILE'])
+//      storePassword = props['STORE_PASSWORD']
+//      keyAlias = props['KEY_ALIAS']
+//      keyPassword = props['KEY_PASSWORD']
     }
   }
 
