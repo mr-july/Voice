@@ -7,9 +7,9 @@ buildscript {
           'patch': 3,
           'build': 0,
       ],
-      compileSdk: 27,
+      compileSdk: 28,
       minSdk    : 21,
-      targetSdk : 27
+      targetSdk : 28
   ]
 
   def versionSuffix = ""
