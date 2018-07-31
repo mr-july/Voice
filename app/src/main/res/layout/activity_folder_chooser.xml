@@ -25,7 +25,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp" />
+                android:layout_marginStart="16dp"/>
 
             <TextView
                 android:id="@+id/storageExplanation"
@@ -35,7 +35,7 @@
                 android:layout_toStartOf="@id/toolSpinner"
                 android:text="@string/storage_pre_device"
                 android:textColor="@color/copy_primary_text_default_material_dark"
-                android:textSize="16sp" />
+                android:textSize="16sp"/>
 
         </RelativeLayout>
 
@@ -43,7 +43,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="72dp"
+        android:layout_height="56dp"
         android:gravity="center_vertical">
 
         <ImageButton
@@ -57,7 +57,7 @@
             android:contentDescription="@string/content_navigate_up"
             android:focusable="true"
             android:scaleType="fitStart"
-            tools:src="@drawable/ic_arrow_upward" />
+            tools:src="@drawable/ic_arrow_upward"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -74,7 +74,7 @@
                 android:maxLines="1"
                 android:text="@string/chosen_folder_description"
                 android:textSize="@dimen/list_text_primary_size"
-                tools:text="This is the primary text which is surprisingly too long long long" />
+                tools:text="This is the primary text which is surprisingly too long long long"/>
 
             <TextView
                 android:id="@+id/currentFolder"
@@ -83,7 +83,7 @@
                 android:maxLines="1"
                 android:textColor="?android:attr/textColorSecondary"
                 android:textSize="@dimen/list_text_secondary_size"
-                tools:text="This is the secondary text which is surprisingly too long long long" />
+                tools:text="This is the secondary text which is surprisingly too long long long"/>
 
         </LinearLayout>
 
@@ -93,7 +93,7 @@
         android:id="@+id/recycler"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="0dp"
         android:layout_weight="1"
         tools:listitem="@layout/activity_folder_chooser_adapter_row_layout" />
 
