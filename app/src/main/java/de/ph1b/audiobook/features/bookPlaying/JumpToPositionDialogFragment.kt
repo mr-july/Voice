@@ -4,7 +4,9 @@ import android.app.Dialog
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
 import androidx.core.view.isVisible
+import com.afollestad.materialdialogs.GravityEnum
 import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.StackingBehavior
 import dagger.android.support.AndroidSupportInjection
 import de.ph1b.audiobook.R
 import de.ph1b.audiobook.data.repo.BookRepository
@@ -83,7 +85,7 @@ class JumpToPositionDialogFragment : DialogFragment() {
 
     return MaterialDialog.Builder(context!!)
       .customView(container.containerView, true)
-      .title(R.string.action_time_change)
+      .title(R.string.action_time_change).titleGravity(GravityEnum.CENTER)
       .onPositive { _, _ ->
         val h = container.numberHour.value
         val m = container.numberMinute.value
@@ -92,6 +94,7 @@ class JumpToPositionDialogFragment : DialogFragment() {
       }
       .positiveText(R.string.dialog_confirm)
       .negativeText(R.string.dialog_cancel)
+      .stackingBehavior(StackingBehavior.NEVER).buttonsGravity(GravityEnum.CENTER)
       .build()
   }
 
