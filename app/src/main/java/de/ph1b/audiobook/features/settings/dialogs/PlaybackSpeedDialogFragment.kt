@@ -47,16 +47,16 @@ class PlaybackSpeedDialogFragment : DialogFragment() {
     val book = repo.bookById(currentBookIdPref.value)
         ?: throw AssertionError("Cannot instantiate $TAG without a current book")
     val speed = book.content.playbackSpeed
-    seekBar.max = ((MAX - MIN) * FACTOR).toInt()
-    seekBar.progress = ((speed - MIN) * FACTOR).toInt()
+    container.seekBar.max = ((MAX - MIN) * FACTOR).toInt()
+    container.seekBar.progress = ((speed - MIN) * FACTOR).toInt()
 
     // observable of seek bar, mapped to speed
-    seekBar.progressChangedStream(initialNotification = true)
+    container.seekBar.progressChangedStream(initialNotification = true)
       .map { Book.SPEED_MIN + it.toFloat() / FACTOR }
       .doOnNext {
         // update speed text
         val text = "${getString(R.string.playback_speed)}: ${speedFormatter.format(it)}"
-        textView.text = text
+        container.textView.text = text
       }
       .debounce(50, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread())
       .subscribe { playerController.setSpeed(it) } // update speed after debounce
