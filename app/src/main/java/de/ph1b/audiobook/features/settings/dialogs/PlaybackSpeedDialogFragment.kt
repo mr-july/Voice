@@ -1,5 +1,6 @@
 package de.ph1b.audiobook.features.settings.dialogs
 
+import android.app.AlertDialog
 import android.annotation.SuppressLint
 import android.app.Dialog
 import android.os.Bundle
@@ -61,10 +62,17 @@ class PlaybackSpeedDialogFragment : DialogFragment() {
       .debounce(50, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread())
       .subscribe { playerController.setSpeed(it) } // update speed after debounce
 
-    return MaterialDialog.Builder(activity!!)
-      .title(R.string.playback_speed)
-      .customView(container.containerView, true)
-      .build()
+    val builder = AlertDialog.Builder(context!!, R.style.Base_ThemeOverlay_AppCompat_Dialog_Alert)
+        .setView(container.containerView)
+        .setNegativeButton(R.string.dialog_cancel){_, _ ->
+          dialog.cancel()
+        }
+
+    return builder.create()
+//    return MaterialDialog.Builder(activity!!)
+//      .title(R.string.playback_speed)
+//      .customView(container.containerView, true)
+//      .build()
   }
 
   companion object {
