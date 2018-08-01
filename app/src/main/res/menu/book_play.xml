@@ -8,25 +8,25 @@
         android:id="@+id/action_sleep"
         android:icon="@drawable/alarm_off"
         android:title="@string/action_sleep"
-        app:showAsAction="always"/>
+        app:showAsAction="never"/>
 
     <item
         android:id="@+id/action_bookmark"
         android:icon="@drawable/bookmark_outline"
         android:title="@string/bookmark"
-        app:showAsAction="always"/>
+        app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/action_time_lapse"
         android:icon="@drawable/speedometer"
         android:title="@string/playback_speed"
-        app:showAsAction="always"/>
+        app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/action_equalizer"
         android:icon="@drawable/ic_equalizer"
         android:title="@string/equalizer"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="never"/>
 
     <item
         android:id="@+id/loudness"

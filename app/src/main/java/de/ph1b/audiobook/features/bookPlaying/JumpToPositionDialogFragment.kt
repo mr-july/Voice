@@ -1,8 +1,10 @@
 package de.ph1b.audiobook.features.bookPlaying
 
+import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
+import android.util.Log
 import androidx.core.view.isVisible
 import com.afollestad.materialdialogs.GravityEnum
 import com.afollestad.materialdialogs.MaterialDialog
@@ -15,7 +17,9 @@ import de.ph1b.audiobook.misc.DialogLayoutContainer
 import de.ph1b.audiobook.misc.inflate
 import de.ph1b.audiobook.persistence.pref.Pref
 import de.ph1b.audiobook.playback.PlayerController
+import de.ph1b.audiobook.uitools.ThemeUtil
 import kotlinx.android.synthetic.main.dialog_time_picker.*
+import kotlinx.android.synthetic.main.settings.view.*
 import java.util.UUID
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
@@ -83,19 +87,32 @@ class JumpToPositionDialogFragment : DialogFragment() {
       }
     }
 
-    return MaterialDialog.Builder(context!!)
-      .customView(container.containerView, true)
-      .title(R.string.action_time_change).titleGravity(GravityEnum.CENTER)
-      .onPositive { _, _ ->
-        val h = container.numberHour.value
-        val m = container.numberMinute.value
-        val newPosition = (m + 60 * h) * 60 * 1000
-        playerController.changePosition(newPosition, book.content.currentChapter.file)
-      }
-      .positiveText(R.string.dialog_confirm)
-      .negativeText(R.string.dialog_cancel)
-      .stackingBehavior(StackingBehavior.NEVER).buttonsGravity(GravityEnum.CENTER)
-      .build()
+    // Base_Theme_AppCompat_Dialog_Alert, Base_ThemeOverlay_AppCompat_Dialog_Alert - ok for day
+    val builder = AlertDialog.Builder(context!!, R.style.Base_ThemeOverlay_AppCompat_Dialog_Alert)
+        .setView(container.containerView)
+        .setPositiveButton(R.string.dialog_confirm) { _, _ ->
+          val h = container.numberHour.value
+          val m = container.numberMinute.value
+          val newPosition = (m + 60 * h) * 60 * 1000
+          playerController.changePosition(newPosition, book.content.currentChapter.file)
+        }
+        .setNegativeButton(R.string.dialog_cancel){_, _ ->
+          dialog.cancel()
+        }
+
+    return builder.create()
+//    return MaterialDialog.Builder(context!!)
+//      .customView(container.containerView, true)
+//      .title(R.string.action_time_change)
+//      .onPositive { _, _ ->
+//        val h = container.numberHour.value
+//        val m = container.numberMinute.value
+//        val newPosition = (m + 60 * h) * 60 * 1000
+//        playerController.changePosition(newPosition, book.content.currentChapter.file)
+//      }
+//      .positiveText(R.string.dialog_confirm)
+//      .negativeText(R.string.dialog_cancel)
+//      .build()
   }
 
   companion object {

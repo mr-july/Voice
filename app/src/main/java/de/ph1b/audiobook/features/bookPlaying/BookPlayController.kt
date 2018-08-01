@@ -212,6 +212,10 @@ class BookPlayController(
   private fun setupToolbar() {
     toolbar.setNavigationIcon(R.drawable.ic_arrow_back)
 
+    toolbar.findViewById<View>(R.id.customMenu)
+        .setOnClickListener() {
+          toolbar.showOverflowMenu()
+        }
     toolbar.inflateMenu(R.menu.book_play)
     val menu = toolbar.menu
 
