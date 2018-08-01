@@ -31,7 +31,7 @@ class PrefsModule {
   @Singleton
   @Named(PrefKeys.THEME)
   fun provideThemePreference(prefs: RxSharedPreferences): Pref<ThemeUtil.Theme> {
-    val pref = prefs.getEnum(PrefKeys.THEME, ThemeUtil.Theme.DAY_NIGHT, ThemeUtil.Theme::class.java)
+    val pref = prefs.getEnum(PrefKeys.THEME, ThemeUtil.Theme.DAY, ThemeUtil.Theme::class.java)
     return PersistentPref(pref)
   }
 
