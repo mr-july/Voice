@@ -79,7 +79,7 @@ class PlaybackSpeedDialogFragment : DialogFragment() {
     val TAG: String = PlaybackSpeedDialogFragment::class.java.simpleName
     private const val MAX = Book.SPEED_MAX
     private const val MIN = Book.SPEED_MIN
-    private const val FACTOR = 100F
+    private const val FACTOR = 10F
     private val speedFormatter = DecimalFormat("0.0 x")
   }
 }
