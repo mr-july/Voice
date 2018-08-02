@@ -107,8 +107,7 @@ class BookOverviewController : BaseController(),
   private fun setupToolbar() {
     toolbar.inflateMenu(R.menu.book_shelf)
     toolbar.title = getString(R.string.app_name)
-    toolbar.findViewById<View>(R.id.customMenu)
-        .setOnClickListener() {
+    toolbar.setOnClickListener() {
           toolbar.showOverflowMenu()
         }
     toolbar.setOnMenuItemClickListener {

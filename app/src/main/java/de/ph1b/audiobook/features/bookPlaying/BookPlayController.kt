@@ -212,8 +212,7 @@ class BookPlayController(
   private fun setupToolbar() {
     toolbar.setNavigationIcon(R.drawable.ic_arrow_back)
 
-    toolbar.findViewById<View>(R.id.customMenu)
-        .setOnClickListener() {
+    toolbar.setOnClickListener() {
           toolbar.showOverflowMenu()
         }
     toolbar.inflateMenu(R.menu.book_play)
@@ -315,11 +314,13 @@ class BookPlayController(
   }
 
   private fun formatTime(ms: Int, duration: Int): String {
-    val h = TimeUnit.MILLISECONDS.toHours(ms.toLong()).toString()
+    val hours = TimeUnit.MILLISECONDS.toHours(ms.toLong())
+    val h = hours.toString()
     val m = "%02d".format((TimeUnit.MILLISECONDS.toMinutes(ms.toLong()) % 60))
     val s = "%02d".format((TimeUnit.MILLISECONDS.toSeconds(ms.toLong()) % 60))
 
-    return if (TimeUnit.MILLISECONDS.toHours(duration.toLong()) == 0L) {
+    val durationH = TimeUnit.MILLISECONDS.toHours(duration.toLong())
+    return if (durationH == 0L) {
       "$m:$s"
     } else {
       "$h:$m:$s"
