@@ -96,7 +96,9 @@ class BookPlayController(
     val progress = book.content.positionInChapter - currentChapter.start
     if (!seekBar.isPressed) {
       seekBar.progress = progress
-      playedTime.text = formatTime(progress, duration)
+      // is it really necessary?
+      // text will be automatically changed after progress change
+      // playedTime.text = formatTime(progress, duration)
     }
 
     // name
